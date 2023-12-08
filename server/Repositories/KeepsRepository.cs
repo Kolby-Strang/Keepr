@@ -127,6 +127,17 @@ public class KeepsRepository
         return keep;
     }
 
+    internal List<Keep> GetKeepsByProfileId(string profileId)
+    {
+        string sql = @"
+        SELECT * FROM keeps
+        WHERE creatorId = @profileId
+        ;";
+
+        List<Keep> keeps = _db.Query<Keep>(sql, new { profileId }).ToList();
+        return keeps;
+    }
+
     private Keep KeepBuilder(Keep keep, Profile profile)
     {
         keep.Creator = profile;

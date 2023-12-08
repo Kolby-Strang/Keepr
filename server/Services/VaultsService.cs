@@ -1,5 +1,6 @@
 
 
+
 namespace Keepr.Services;
 
 public class VaultsService
@@ -39,6 +40,12 @@ public class VaultsService
         return vault;
     }
 
+    internal List<Vault> GetVaultsByProfileId(string profileId)
+    {
+        List<Vault> vaults = _repo.GetVaultsByProfileId(profileId);
+        return vaults;
+    }
+
     internal Vault UpdateVault(Vault vaultData, int vaultId, string userId)
     {
         Vault vaultToUpdate = GetVaultById(vaultId, userId);
@@ -54,5 +61,15 @@ public class VaultsService
 
         Vault vault = _repo.UpdateVault(vaultToUpdate);
         return vault;
+    }
+
+    internal List<Vault> GetVaultsByProfileId(string profileId, string userId)
+    {
+        List<Vault> vaults = _repo.GetVaultsByProfileId(profileId);
+        if (profileId == userId)
+        {
+            return vaults;
+        }
+        return vaults.FindAll(vault => vault.IsPrivate == false);
     }
 }

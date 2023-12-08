@@ -2,6 +2,7 @@
 
 
 
+
 namespace Keepr.Repositories;
 
 public class VaultsRepository
@@ -55,6 +56,17 @@ public class VaultsRepository
 
         Vault vault = _db.Query<Vault, Profile, Vault>(sql, VaultBuilder, new { vaultId }).FirstOrDefault();
         return vault;
+    }
+
+    internal List<Vault> GetVaultsByProfileId(string profileId)
+    {
+        string sql = @"
+        SELECT * FROM vaults
+        WHERE creatorId = @profileId
+        ;";
+
+        List<Vault> vaults = _db.Query<Vault>(sql, new { profileId }).ToList();
+        return vaults;
     }
 
     internal Vault UpdateVault(Vault vaultToUpdate)
