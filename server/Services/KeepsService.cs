@@ -38,11 +38,14 @@ public class KeepsService
         return keeps;
     }
 
-    internal Keep GetKeepById(int keepId)
+    internal Keep GetKeepById(int keepId, bool increment = false)
     {
         Keep keep = _repo.GetKeepById(keepId);
-        keep.Views++;
-        _repo.UpdateKeep(keep);
+        if (increment)
+        {
+            keep.Views++;
+            _repo.UpdateKeep(keep);
+        }
         if (keep == null)
         {
             throw new Exception($"Keep: {keepId} does not exist");
