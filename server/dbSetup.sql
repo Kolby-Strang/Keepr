@@ -58,4 +58,4 @@ FROM keeps keep
 WHERE keep.id = 9
 GROUP BY (keep.id);
 
-DELETE FROM keeps WHERE id = 15;
+DELETE FROM keeps WHERE id = 4;

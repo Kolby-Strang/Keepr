@@ -1,27 +1,27 @@
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+  <nav class="container-fluid px-5 py-2 h-100">
+    <div class="row">
+
+      <div class="col-4 d-flex align-items-center">
+        <button class="btn btn-secondary fs-5 fw-bold">Create</button>
       </div>
-    </router-link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
-        </li>
-      </ul>
-      <!-- LOGIN COMPONENT HERE -->
-      <div>
-        <button class="btn text-light" @click="toggleTheme"><i class="mdi" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i></button>
+
+      <div class="col-4 d-flex justify-content-center align-items-center">
+        <router-link :to="{ name: 'Home' }">
+          <img class="logo" src="src/assets/img/Keepr Logo.png" alt="Keepr Co. Logo">
+        </router-link>
       </div>
-      <Login />
+
+      <div class="col-4 d-flex justify-content-end align-items-center">
+        <button class="btn" :class="theme == 'light' ? 'text-dark' : 'text-light'" @click="toggleTheme">
+          <i class="mdi" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'">
+          </i>
+        </button>
+
+        <!-- LOGIN COMPONENT HERE -->
+        <Login />
+      </div>
+
     </div>
   </nav>
 </template>
@@ -71,5 +71,13 @@ a:hover {
   nav {
     height: 64px;
   }
+}
+
+nav {
+  border-bottom: solid 3px #DED6E9;
+}
+
+.logo {
+  width: 12vh;
 }
 </style>

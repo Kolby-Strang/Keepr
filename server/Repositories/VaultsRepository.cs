@@ -61,11 +61,15 @@ public class VaultsRepository
     internal List<Vault> GetVaultsByProfileId(string profileId)
     {
         string sql = @"
-        SELECT * FROM vaults
-        WHERE creatorId = @profileId
+        SELECT 
+        vault.*,
+        acc.*
+        FROM vaults vault
+        JOIN accounts acc ON acc.id = vault.creatorId
+        WHERE vault.creatorId = @profileId
         ;";
 
-        List<Vault> vaults = _db.Query<Vault>(sql, new { profileId }).ToList();
+        List<Vault> vaults = _db.Query<Vault, Profile, Vault>(sql, VaultBuilder, new { profileId }).ToList();
         return vaults;
     }
 
