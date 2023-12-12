@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-3">
+    <div v-if="vault.id || vaultKeeps.length > 0" class="container mt-3">
         <div class="row">
             <div class="col-12 d-flex flex-column align-items-center">
                 <div>
@@ -38,6 +38,7 @@
             </div>
         </div>
     </div>
+    <Loader v-else />
     <VaultKeepModal />
     <EditVaultModal />
 </template>
@@ -53,6 +54,7 @@ import VaultKeepCard from '../components/VaultKeepCard.vue';
 import VaultKeepModal from '../components/modals/VaultKeepModal.vue';
 import { AppState } from '../AppState';
 import EditVaultModal from '../components/modals/EditVaultModal.vue';
+import Loader from '../components/Loader.vue';
 export default {
     setup() {
         // VARIABLES
@@ -100,7 +102,7 @@ export default {
         }, { immediate: true });
         return { vault, vaultKeeps, destroyVault };
     },
-    components: { VaultKeepCard, VaultKeepModal, EditVaultModal }
+    components: { VaultKeepCard, VaultKeepModal, EditVaultModal, Loader }
 };
 </script>
 

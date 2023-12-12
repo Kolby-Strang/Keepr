@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div v-if="profile.id" class="container">
         <div class="row mt-3 px-0 mx-0 px-md-5 mx-md-5">
             <div class="col-12 profile-cover-container">
                 <img class="cover-img rounded"
@@ -43,6 +43,7 @@
             </div>
         </div>
     </div>
+    <Loader v-else />
     <EditAccountModal />
 </template>
 
@@ -58,6 +59,7 @@ import { keepsService } from '../services/KeepsService';
 import KeepCard from '../components/KeepCard.vue';
 import VaultCard from '../components/VaultCard.vue';
 import EditAccountModal from '../components/modals/EditAccountModal.vue'
+import Loader from '../components/Loader.vue';
 
 export default {
     setup(props) {
@@ -126,7 +128,7 @@ export default {
             account: computed(() => AppState.account)
         };
     },
-    components: { KeepCard, VaultCard, EditAccountModal }
+    components: { KeepCard, VaultCard, EditAccountModal, Loader }
 };
 </script>
 

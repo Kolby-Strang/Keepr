@@ -6,14 +6,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="mb-3">
-                <input v-model="editable.name" type="text" class="form-control" placeholder="Title...">
+                <input v-model="editable.name" minlength="1" maxlength="25" required type="text" class="form-control"
+                    placeholder="Title...">
             </div>
             <div class="mb-3">
-                <input v-model="editable.img" type="text" class="form-control" placeholder="Image URL...">
+                <input v-model="editable.img" minlength="1" maxlength="1000" required type="text" class="form-control"
+                    placeholder="Image URL...">
             </div>
             <div class="mb-4">
-                <textarea v-model="editable.description" class="form-control" placeholder="Description..."
-                    rows="7"></textarea>
+                <textarea v-model="editable.description" minlength="1" maxlength="300" class="form-control"
+                    placeholder="Description..." rows="7"></textarea>
             </div>
             <div class="d-flex justify-content-end">
                 <div>

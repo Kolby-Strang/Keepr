@@ -1,22 +1,24 @@
 <template>
     <ModalBase id="createVaultModal">
-        <!-- TODO ADD X'S TO THE CREATE MODALS -->
         <div class="p-3">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <p class="fs-2 fw-bold mb-0">Create Vault</p>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="mb-3">
-                <input v-model="editable.name" type="text" class="form-control" placeholder="Title...">
+                <input v-model="editable.name" minlength="1" maxlength="25" required type="text" class="form-control"
+                    placeholder="Title...">
             </div>
             <div class="mb-3">
-                <input v-model="editable.img" type="text" class="form-control" placeholder="Image URL...">
+                <input v-model="editable.img" minlength="1" maxlength="1000" required type="text" class="form-control"
+                    placeholder="Image URL...">
             </div>
             <div class="d-flex justify-content-end">
                 <div>
                     <div class="form-text">*Private vaults can only be seen by you</div>
                     <div class="form-check form-switch">
-                        <input v-model="editable.isPrivate" class="form-check-input" type="checkbox" role="switch">
+                        <input v-model="editable.isPrivate" minlength="1" maxlength="300" class="form-check-input"
+                            type="checkbox" role="switch">
                         <label class="form-check-label">Make Vault Private?</label>
                     </div>
                     <button @click="createVault()" class="btn btn-dark w-100">Create Vault</button>

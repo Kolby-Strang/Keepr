@@ -6,14 +6,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="mb-3">
-                <input v-model="accountEditable.name" type="text" class="form-control" placeholder="Name...">
+                <input v-model="accountEditable.name" minlength="1" maxlength="255" type="text" class="form-control"
+                    placeholder="Name...">
                 <div class="form-text">*Please use your real name</div>
             </div>
             <div class="mb-3">
-                <input v-model="accountEditable.picture" type="text" class="form-control" placeholder="Profile Picture...">
+                <input v-model="accountEditable.picture" minlength="1" maxlength="1000" type="text" class="form-control"
+                    placeholder="Profile Picture...">
             </div>
             <div class="mb-5">
-                <input v-model="accountEditable.coverImg" type="text" class="form-control" placeholder="Cover Photo...">
+                <input v-model="accountEditable.coverImg" minlength="1" maxlength="1000" type="text" class="form-control"
+                    placeholder="Cover Photo...">
             </div>
             <div class="d-flex justify-content-between align-items-end">
                 <div class="text-center w-25">

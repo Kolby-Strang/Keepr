@@ -6,16 +6,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="mb-3">
-                <input v-model="editable.name" type="text" class="form-control" placeholder="Title...">
+                <input v-model="editable.name" minlength="1" maxlength="25" required type="text" class="form-control"
+                    placeholder="Title...">
             </div>
             <div class="mb-3">
-                <input v-model="editable.img" type="text" class="form-control" placeholder="Image URL...">
+                <input v-model="editable.img" minlength="1" maxlength="1000" required type="text" class="form-control"
+                    placeholder="Image URL...">
             </div>
             <div class="d-flex justify-content-end">
                 <div>
                     <div class="form-text">*Private vaults can only be seen by you</div>
                     <div class="form-check form-switch">
-                        <input v-model="editable.isPrivate" class="form-check-input" type="checkbox" role="switch">
+                        <input v-model="editable.isPrivate" required class="form-check-input" type="checkbox" role="switch">
                         <label class="form-check-label">Make Vault Private?</label>
                     </div>
                     <button @click="editVault()" class="btn btn-dark w-100">Edit Vault</button>
@@ -30,7 +32,6 @@
 import { computed, ref, watch } from 'vue';
 import ModalBase from './ModalBase.vue';
 import { AppState } from '../../AppState';
-import { applyStyles } from '@popperjs/core';
 import { vaultsService } from '../../services/VaultsService';
 import Pop from '../../utils/Pop';
 import { Modal } from 'bootstrap';
