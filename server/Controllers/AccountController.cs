@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+
 namespace Keepr.Controllers;
 
 [ApiController]
@@ -40,6 +42,23 @@ public class AccountController : ControllerBase
       string userId = userInfo.Id;
       List<Vault> vaults = _vaultsService.GetVaultsByProfileId(userId);
       return Ok(vaults);
+    }
+    catch (Exception err)
+    {
+      return BadRequest(err.Message);
+    }
+  }
+
+  [HttpPut]
+  [Authorize]
+  public async Task<ActionResult<Account>> Edit([FromBody] Account accountData)
+  {
+    try
+    {
+      Account userInfo = await _a0.GetUserInfoAsync<Account>(HttpContext);
+      string userEmail = userInfo.Email;
+      Account account = _accountService.Edit(accountData, userEmail);
+      return Ok(account);
     }
     catch (Exception err)
     {

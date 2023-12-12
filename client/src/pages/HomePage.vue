@@ -42,16 +42,4 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.masonry-with-columns {
-  columns: 20vw auto;
-  column-gap: auto;
-}
-
-@media (max-width: 600px) {
-  .masonry-with-columns {
-    columns: 30vw auto;
-    column-gap: auto;
-  }
-}
-</style>
+<style scoped lang="scss"></style>

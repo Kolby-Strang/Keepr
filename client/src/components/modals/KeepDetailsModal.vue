@@ -1,10 +1,10 @@
 <template>
     <ModalBase class="container-fluid" size="modal-xl" id="keepDetails">
         <div v-if="keep.id" class="row">
-            <div class="col-6 pe-0">
-                <img class="keep-img rounded-start" :src="keep.img" :alt="`Image for keep ${keep.name}`">
+            <div class="col-12 col-md-6 pe-md-0">
+                <img class="keep-img rounded-md-start rounded-top" :src="keep.img" :alt="`Image for keep ${keep.name}`">
             </div>
-            <div class="col-6 ps-0">
+            <div class="col-12 col-md-6 ps-md-0">
                 <div class="info-container">
 
                     <div class="d-flex align-items-center pe-4">
@@ -17,9 +17,11 @@
                         <p class="fs-1 text-dark fw-bold text-center">{{ keep.name }}</p>
                         <p>{{ keep.description }}</p>
                     </div>
-                    <div class="row w-100 pe-1">
-                        <div v-if="userVaults.length > 0" class="col-6 p-0 d-flex justify-content-start align-items-center">
-                            <select v-model="editableVaultId">
+                    <div class="row w-100 pe-4 pe-sm-2 pe-md-1">
+                        <div v-if="userVaults.length > 0"
+                            class="col-12 col-sm-6 col-md-12 col-lg-5 p-0 d-flex justify-content-center align-items-center">
+                            <!-- TODO make card hand type selector -->
+                            <select v-model="editableVaultId" class="w-75">
                                 <option value="" selected disabled hidden>Vaults...</option>
                                 <option v-for="vault in userVaults" :key="vault.id" :value="vault.id">
                                     {{ vault.name }}
@@ -28,12 +30,13 @@
                             <button @click="saveActiveKeepToVault()" role="button"
                                 class="btn btn-primary text-white p-1 py-0 ms-2 selectable">save</button>
                         </div>
-                        <div class="col-6 p-0">
+                        <div class="col-12 col-sm-6 col-md-12 col-lg-7 p-0 mt-2 mt-sm-0 mt-md-2 mt-lg-0">
                             <router-link @click="dismissModal()"
                                 :to="{ name: 'ProfilePage', params: { 'profileId': keep.creator.id } }"
-                                class="d-flex justify-content-end align-items-center">
+                                class="d-flex justify-content-center align-items-center">
                                 <img class="profile-img" :src="keep.creator.picture" :alt="keep.creator.name">
-                                <p class="mb-0 ms-1 d-inline text-dark fw-bold">{{ keep.creator.name }}</p>
+                                <p class="mb-0 ms-1 d-inline text-dark fw-bold">{{ keep.creator.name.length > 15 ?
+                                    keep.creator.name.substring(0, 12) + '...' : keep.creator.name }}</p>
                             </router-link>
                         </div>
                     </div>

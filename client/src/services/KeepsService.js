@@ -18,6 +18,20 @@ class KeepsService {
         AppState.allKeeps.splice(targetIndex, 1, keep)
         return keep
     }
+    async getKeepsByProfileId(profileId, doesUserOwn) {
+        const res = await api.get(`api/profiles/${profileId}/keeps`)
+        const keeps = res.data.map(k => new Keep(k))
+        if (doesUserOwn) {
+            AppState.activeUserKeeps = keeps
+        }
+        return keeps
+    }
+    async createKeep(keepData) {
+        const res = await api.post('api/keeps', keepData)
+        const keep = new Keep(res.data)
+        AppState.activeUserKeeps.push(keep)
+        AppState.allKeeps.push(keep)
+    }
 
 }
 

@@ -58,4 +58,6 @@ FROM keeps keep
 WHERE keep.id = 9
 GROUP BY (keep.id);
 
-DELETE FROM keeps WHERE id = 4;
+DELETE FROM keeps WHERE id > 41;
+
+DELETE FROM vaults WHERE id > 50;

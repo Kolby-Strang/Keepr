@@ -7,6 +7,8 @@
   </main>
   <KeepDetailsModal />
   <CreateKeepModal />
+  <CreateVaultModal />
+  <!-- TODO figure out why this modal gets so small at 992 px -->
 </template>
 
 <script>
@@ -15,6 +17,7 @@ import { AppState } from './AppState'
 import KeepDetailsModal from './components/modals/KeepDetailsModal.vue'
 import CreateKeepModal from './components/modals/CreateKeepModal.vue'
 import Navbar from './components/Navbar.vue'
+import CreateVaultModal from './components/modals/CreateVaultModal.vue'
 
 export default {
   setup() {
@@ -22,7 +25,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar, KeepDetailsModal, CreateKeepModal }
+  components: { Navbar, KeepDetailsModal, CreateKeepModal, CreateVaultModal }
 }
 </script>
 <style lang="scss">

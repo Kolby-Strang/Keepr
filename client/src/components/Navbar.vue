@@ -3,7 +3,23 @@
     <div class="row">
 
       <div class="col-4 d-flex align-items-center">
-        <button class="btn btn-secondary fs-5 fw-bold">Create</button>
+        <div class="dropdown">
+          <button class="btn btn-secondary fs-5 fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Create
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <p data-bs-target="#createKeepModal" data-bs-toggle="modal" class="dropdown-item mb-0 selectable">
+                Create Keep
+              </p>
+            </li>
+            <li>
+              <p data-bs-target="#createVaultModal" data-bs-toggle="modal" class="dropdown-item mb-0 selectable">
+                Create Vault
+              </p>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="col-4 d-flex justify-content-center align-items-center">
