@@ -8,7 +8,6 @@
   <KeepDetailsModal />
   <CreateKeepModal />
   <CreateVaultModal />
-  <!-- TODO figure out why this modal gets so small at 992 px -->
 </template>
 
 <script>

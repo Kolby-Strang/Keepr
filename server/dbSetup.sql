@@ -60,4 +60,4 @@ GROUP BY (keep.id);
 
 DELETE FROM keeps WHERE id > 41;
 
-DELETE FROM vaults WHERE id > 50;
+DELETE FROM vaults WHERE id > 10;

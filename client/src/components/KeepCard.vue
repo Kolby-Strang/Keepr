@@ -3,7 +3,8 @@
         <img class="img-fluid rounded" :src="keep.img" :alt="keep.name + ' image'">
         <div class="position-absolute h-100 w-100 d-flex justify-content-between align-items-end t-0 p-2">
             <p class="text-white mb-0 fw-bold text-shadow fs-5 over-none">{{ keep.name }}</p>
-            <img class="profile-img w-25" :src="keep.creator.picture" :alt="keep.creator.name">
+            <img class="profile-img w-25 d-none d-md-block" :src="keep.creator.picture" :alt="keep.creator.name"
+                :title="keep.creator.name">
         </div>
     </div>
 </template>

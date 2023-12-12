@@ -1,9 +1,8 @@
 <template>
-    <ModalBase id="createVaultModal">
-        <!-- TODO ADD X'S TO THE CREATE MODALS -->
+    <ModalBase id="editVaultModal">
         <div class="p-3">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <p class="fs-2 fw-bold mb-0">Create Vault</p>
+                <p class="fs-2 fw-bold mb-0">Edit Vault</p>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="mb-3">
@@ -19,7 +18,7 @@
                         <input v-model="editable.isPrivate" class="form-check-input" type="checkbox" role="switch">
                         <label class="form-check-label">Make Vault Private?</label>
                     </div>
-                    <button @click="createVault()" class="btn btn-dark w-100">Create Vault</button>
+                    <button @click="editVault()" class="btn btn-dark w-100">Edit Vault</button>
                 </div>
             </div>
         </div>
@@ -28,36 +27,39 @@
 
 
 <script>
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import ModalBase from './ModalBase.vue';
-import Pop from '../../utils/Pop';
+import { AppState } from '../../AppState';
+import { applyStyles } from '@popperjs/core';
 import { vaultsService } from '../../services/VaultsService';
+import Pop from '../../utils/Pop';
 import { Modal } from 'bootstrap';
 
 export default {
     setup() {
         // VARIABLES
-        const editable = ref({ isPrivate: false })
+        const editable = ref({})
+        const watchableVault = computed(() => AppState.activeVault)
         // FUNCTIONS
-        async function createVault() {
+        async function editVault() {
             try {
-                await vaultsService.createVault(editable.value)
-                editable.value = { isPrivate: false }
-                Pop.success("Vault Created!")
-                Modal.getOrCreateInstance('#createVaultModal').hide()
-            } catch (error) {
-                Pop.error(error)
+                vaultsService.editVault(editable.value)
+                Pop.success('Vault Edited!')
+                Modal.getOrCreateInstance('#editVaultModal').hide()
+            }
+            catch (error) {
+                Pop.error(error);
             }
         }
-        return { editable, createVault };
+        // LIFECYCLE
+        watch(watchableVault, () => {
+            editable.value = { ...watchableVault.value }
+        }, { immediate: true })
+        return { editVault, editable };
     },
     components: { ModalBase }
 };
 </script>
 
 
-<style lang="scss" scoped>
-.form-text {
-    font-size: x-small;
-}
-</style>
+<style lang="scss" scoped></style>

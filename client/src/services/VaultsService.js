@@ -20,6 +20,25 @@ class VaultsService {
         const res = await api.post('api/vaults', vaultData)
         AppState.activeUserVaults.push(new Vault(res.data))
     }
+    async getVaultById(vaultId) {
+        AppState.activeVault = {}
+        const res = await api.get(`api/vaults/${vaultId}`)
+        const vault = new Vault(res.data)
+        AppState.activeVault = vault
+        return vault
+    }
+    async destroyVault(vaultId) {
+        await api.delete(`api/vaults/${vaultId}`)
+        const targetIndex = AppState.activeUserVaults.findIndex(v => v.id == vaultId)
+        AppState.activeUserVaults.splice(targetIndex, 1)
+    }
+    async editVault(vaultData) {
+        const res = await api.put(`api/vaults/${vaultData.id}`, vaultData)
+        const vault = new Vault(res.data)
+        AppState.activeVault = vault
+        const targetIndex = AppState.activeUserVaults.findIndex(v => v.id == vault.id)
+        AppState.activeUserVaults.splice(targetIndex, 1, vault)
+    }
 }
 
 

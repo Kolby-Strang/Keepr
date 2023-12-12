@@ -18,10 +18,9 @@
             <div class="col-12 text-center">
                 <p class="fs-1 fw-bold mb-0">{{ profile.name }}</p>
                 <p>
-                    {{ vaults.length }}
-                    Vaults |
-                    {{ keeps.length }}
-                    Keeps
+                    {{ vaults.length + ' ' + (vaults.length == 1 ? 'Vault' : 'Vaults') }}
+                    |
+                    {{ keeps.length + ' ' + (keeps.length == 1 ? 'Keep' : 'Keeps') }}
                 </p>
             </div>
         </div>
@@ -37,7 +36,7 @@
             <div class="col-12">
                 <p class="fs-2 fw-bold">Keeps</p>
                 <div class="masonry-with-columns">
-                    <div v-if="keeps.length > 0" v-for="keep in keeps" :key="keep.id" class="mb-4">
+                    <div v-if="keeps.length > 0" v-for="keep in keeps" :key="keep.id">
                         <KeepCard :keep="keep" />
                     </div>
                 </div>

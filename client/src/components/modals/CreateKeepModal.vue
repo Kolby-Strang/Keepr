@@ -1,7 +1,10 @@
 <template>
     <ModalBase id="createKeepModal">
         <div class="p-3">
-            <p class="fs-2 fw-bold">Create Keep</p>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="fs-2 fw-bold mb-0">Create Keep</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="mb-3">
                 <input v-model="editable.name" type="text" class="form-control" placeholder="Title...">
             </div>

@@ -1,8 +1,11 @@
 <template>
     <ModalBase class="container-fluid" size="modal-xl" id="keepDetails">
         <div v-if="keep.id" class="row">
-            <div class="col-12 col-md-6 pe-md-0">
-                <img class="keep-img rounded-md-start rounded-top" :src="keep.img" :alt="`Image for keep ${keep.name}`">
+            <div class="col-12 col-md-6 pe-md-0 position-relative">
+                <img class="keep-img rounded-top rounded-sm-start" :src="keep.img" :alt="`Image for keep ${keep.name}`">
+                <div v-if="keep.creator.id == account.id" class="position-absolute t-0 r-0 w-100 h-100 text-end p-2 px-3">
+                    <i @click="destroyKeep()" class="mdi mdi-trash-can-outline fs-3 text-danger text-shadow selectable"></i>
+                </div>
             </div>
             <div class="col-12 col-md-6 ps-md-0">
                 <div class="info-container">
@@ -18,17 +21,18 @@
                         <p>{{ keep.description }}</p>
                     </div>
                     <div class="row w-100 pe-4 pe-sm-2 pe-md-1">
-                        <div v-if="userVaults.length > 0"
-                            class="col-12 col-sm-6 col-md-12 col-lg-5 p-0 d-flex justify-content-center align-items-center">
-                            <!-- TODO make card hand type selector -->
-                            <select v-model="editableVaultId" class="w-75">
-                                <option value="" selected disabled hidden>Vaults...</option>
-                                <option v-for="vault in userVaults" :key="vault.id" :value="vault.id">
-                                    {{ vault.name }}
-                                </option>
-                            </select>
-                            <button @click="saveActiveKeepToVault()" role="button"
-                                class="btn btn-primary text-white p-1 py-0 ms-2 selectable">save</button>
+                        <div class="col-12 col-sm-6 col-md-12 col-lg-5 p-0">
+                            <div v-if="userVaults.length > 0" class="d-flex justify-content-center align-items-center">
+                                <!-- TODO make card hand type selector -->
+                                <select v-model="editableVaultId" class="w-75">
+                                    <option value="" selected disabled hidden>Vaults...</option>
+                                    <option v-for="vault in userVaults" :key="vault.id" :value="vault.id">
+                                        {{ vault.name }}
+                                    </option>
+                                </select>
+                                <button @click="saveActiveKeepToVault()" role="button"
+                                    class="btn btn-primary text-white p-1 py-0 ms-2 selectable">save</button>
+                            </div>
                         </div>
                         <div class="col-12 col-sm-6 col-md-12 col-lg-7 p-0 mt-2 mt-sm-0 mt-md-2 mt-lg-0">
                             <router-link @click="dismissModal()"
@@ -54,6 +58,7 @@ import ModalBase from './ModalBase.vue'
 import Pop from '../../utils/Pop';
 import { vaultsService } from '../../services/VaultsService';
 import { Modal } from 'bootstrap';
+import { keepsService } from '../../services/KeepsService';
 
 export default {
     setup() {
@@ -77,6 +82,20 @@ export default {
         function dismissModal() {
             Modal.getOrCreateInstance('#keepDetails').hide()
         }
+        async function destroyKeep() {
+            try {
+                const yes = await Pop.confirm()
+                if (!yes) {
+                    Pop.toast('Cancelled')
+                    return
+                }
+                await keepsService.destroyKeep(keep.value.id)
+                Pop.success(`Keep was Deleted!`)
+                Modal.getOrCreateInstance('#keepDetails').hide()
+            } catch (error) {
+                Pop.error
+            }
+        }
         // LIFECYCLE
         return {
             keep,
@@ -84,7 +103,8 @@ export default {
             userVaults,
             editableVaultId,
             saveActiveKeepToVault,
-            dismissModal
+            dismissModal,
+            destroyKeep
         }
     },
     components: { ModalBase }

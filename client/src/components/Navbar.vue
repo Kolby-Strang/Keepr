@@ -29,7 +29,8 @@
       </div>
 
       <div class="col-4 d-flex justify-content-end align-items-center">
-        <button class="btn" :class="theme == 'light' ? 'text-dark' : 'text-light'" @click="toggleTheme">
+        <button title="Toggle dark mode" class="btn" :class="theme == 'light' ? 'text-dark' : 'text-light'"
+          @click="toggleTheme">
           <i class="mdi" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'">
           </i>
         </button>

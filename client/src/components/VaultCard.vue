@@ -1,16 +1,17 @@
 <template>
-    <!-- TODO link this to the vault details page -->
-    <div class="position-relative box-shadow rounded selectable">
-        <img class="vault-img rounded" :src="vault.img" :alt="`Image for ${vault.name}`">
-        <div class="vault-card-info rounded">
-            <!-- TODO add some bottom shadow (see mock) -->
-            <div class="d-flex justify-content-between align-items-center">
-                <p class="fs-4 fw-bold mb-0 ms-2 over-none text-nowrap">{{ vault.name.length > 14 ? vault.name.substring(0,
-                    11) + '...' : vault.name }}</p>
-                <i v-if="vault.isPrivate" class="mdi mdi-lock-outline fs-4"></i>
+    <router-link :to="{ name: 'VaultDetailsPage', params: { vaultId: vault.id } }">
+        <div class="position-relative box-shadow rounded selectable">
+            <img class="vault-img rounded" :src="vault.img" :alt="`Image for ${vault.name}`">
+            <div class="vault-card-info rounded">
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="fs-4 fw-bold mb-0 ms-2 over-none text-nowrap">{{ vault.name.length > 14 ?
+                        vault.name.substring(0,
+                            11) + '...' : vault.name }}</p>
+                    <i v-if="vault.isPrivate" class="mdi mdi-lock-outline fs-4"></i>
+                </div>
             </div>
         </div>
-    </div>
+    </router-link>
 </template>
 
 

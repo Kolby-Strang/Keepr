@@ -62,7 +62,6 @@ public class KeepsService
     internal Keep UpdateKeep(int keepId, Keep keepData, string userId)
     {
         Keep keepToUpdate = GetKeepById(keepId);
-        // TODO Don't increment View on Update
         if (keepToUpdate.CreatorId != userId)
         {
             throw new Exception($"Keep: {keepId} does not belong to User: {userId}");

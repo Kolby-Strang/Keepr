@@ -2,7 +2,7 @@
   <div class="container mt-4">
 
     <div class="masonry-with-columns">
-      <div v-for="keep in keeps" :key="keep.id" class="mb-4">
+      <div v-for="keep in keeps" :key="keep.id">
         <KeepCard :keep="keep" />
       </div>
     </div>

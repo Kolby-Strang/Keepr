@@ -1,7 +1,10 @@
 <template>
     <ModalBase class="text-primary" id="editAccountModal">
         <div class="p-3">
-            <p class="fs-2 fw-bold">Edit Account</p>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="fs-2 fw-bold mb-0">Edit Account</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="mb-3">
                 <input v-model="accountEditable.name" type="text" class="form-control" placeholder="Name...">
                 <div class="form-text">*Please use your real name</div>
@@ -15,11 +18,11 @@
             <div class="d-flex justify-content-between align-items-end">
                 <div class="text-center w-25">
                     <p>Profile Pic</p>
-                    <img class="profile-img" :src="accountEditable.picture" alt="">
+                    <img class="profile-img w-100" :src="accountEditable.picture" alt="">
                 </div>
                 <div class="text-center w-50">
                     <p>Cover Img</p>
-                    <img class="cover-img rounded" :src="accountEditable.coverImg" alt="">
+                    <img class="cover-img w-100 rounded" :src="accountEditable.coverImg" alt="">
                 </div>
                 <button @click="editAccount()" class="btn btn-dark">Submit!</button>
             </div>
@@ -54,7 +57,7 @@ export default {
         // LIFECYCLE
         watch(watchableAccount, () => {
             accountEditable.value = { ...AppState.account }
-        })
+        }, { immediate: true })
         return {
             accountEditable,
             editAccount

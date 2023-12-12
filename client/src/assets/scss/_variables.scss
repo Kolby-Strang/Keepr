@@ -155,4 +155,44 @@ $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
   @include generate-theme-properties("dark", $dark-theme);
 }
 
+// TODO TRY TO GET THIS TO WORK PROPERLY, I THINK !IMPORTANT IS THE PROBLEM
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .rounded#{$infix} {
+      @include border-radius($border-radius);
+    }
+
+    .rounded#{$infix}-top {
+      @include border-top-radius($border-radius);
+      @include border-bottom-radius(0);
+    }
+
+    .rounded#{$infix}-end {
+      @include border-end-radius($border-radius);
+      @include border-start-radius(0);
+    }
+
+    .rounded#{$infix}-bottom {
+      @include border-bottom-radius($border-radius);
+      @include border-top-radius(0);
+    }
+
+    .rounded#{$infix}-start {
+      @include border-start-radius($border-radius);
+      @include border-end-radius(0);
+    }
+
+    .rounded#{$infix}-circle {
+      border-radius: 50%;
+    }
+
+    .rounded#{$infix}-0 {
+      border-radius: 0;
+    }
+
+  }
+}
+
 @debug "[sass_success] Themes_Built";
