@@ -94,7 +94,15 @@ nav {
   border-bottom: solid 3px #DED6E9;
 }
 
+
 .logo {
   width: 12vh;
+}
+</style>
+<style>
+[data-bs-theme="dark"] {
+  .logo {
+    filter: invert(1);
+  }
 }
 </style>

@@ -192,6 +192,10 @@ $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
       border-radius: 0;
     }
 
+    .rounded#{$infix}-top-0 {
+      border-top-right-radius: 0 !important;
+    }
+
   }
 }
 

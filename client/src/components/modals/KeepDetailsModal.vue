@@ -2,7 +2,7 @@
     <ModalBase class="container-fluid" size="modal-xl" id="keepDetails">
         <div v-if="keep.id" class="row">
             <div class="col-12 col-md-6 pe-md-0 position-relative">
-                <img class="keep-img rounded-top rounded-sm-start" :src="keep.img" :alt="`Image for keep ${keep.name}`">
+                <img class="keep-img rounded" :src="keep.img" :alt="`Image for keep ${keep.name}`">
                 <div v-if="keep.creator.id == account.id" class="position-absolute t-0 r-0 w-100 h-100 text-end p-2 px-3">
                     <i @click="destroyKeep()" class="mdi mdi-trash-can-outline fs-3 text-danger text-shadow selectable"></i>
                 </div>
