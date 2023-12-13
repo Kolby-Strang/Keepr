@@ -2,7 +2,9 @@
     <ModalBase class="container-fluid" size="modal-xl" id="keepDetails">
         <div v-if="keep.id" class="row">
             <div class="col-12 col-md-6 pe-md-0 position-relative">
-                <img class="keep-img rounded" :src="keep.img" :alt="`Image for keep ${keep.name}`">
+                <img class="keep-img rounded" :src="keep.img"
+                    onerror="this.src='https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg'"
+                    :alt="`Image for keep ${keep.name}`">
                 <div v-if="keep.creator.id == account.id" class="position-absolute t-0 r-0 w-100 h-100 text-end p-2 px-3">
                     <i @click="destroyKeep()" class="mdi mdi-trash-can-outline fs-3 text-danger text-shadow selectable"></i>
                 </div>
@@ -38,7 +40,9 @@
                             <router-link @click="dismissModal()"
                                 :to="{ name: 'ProfilePage', params: { 'profileId': keep.creator.id } }"
                                 class="d-flex justify-content-center align-items-center">
-                                <img class="profile-img" :src="keep.creator.picture" :alt="keep.creator.name">
+                                <img class="profile-img" :src="keep.creator.picture"
+                                    onerror="this.src='https://tr.rbxcdn.com/70108dc7da4e002c8e5d2c1dcf0825fb/420/420/Hat/Png'"
+                                    :alt="keep.creator.name">
                                 <p class="mb-0 ms-1 d-inline text-dark fw-bold">{{ keep.creator.name.length > 15 ?
                                     keep.creator.name.substring(0, 12) + '...' : keep.creator.name }}</p>
                             </router-link>

@@ -3,6 +3,7 @@
         <div v-if="vaultKeep.vaultKeepId" class="row">
             <div class="col-12 col-md-6 pe-md-0">
                 <img class="keep-img rounded-md-start rounded-top" :src="vaultKeep.img"
+                    onerror="this.src='https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg'"
                     :alt="`Image for keep ${vaultKeep.name}`">
             </div>
             <div class="col-12 col-md-6 ps-md-0">
@@ -30,7 +31,9 @@
                             <router-link @click="dismissModal()"
                                 :to="{ name: 'ProfilePage', params: { 'profileId': vaultKeep.creator.id } }"
                                 class="d-flex justify-content-center align-items-center">
-                                <img class="profile-img" :src="vaultKeep.creator.picture" :alt="vaultKeep.creator.name">
+                                <img class="profile-img" :src="vaultKeep.creator.picture"
+                                    onerror="this.src='https://tr.rbxcdn.com/70108dc7da4e002c8e5d2c1dcf0825fb/420/420/Hat/Png'"
+                                    :alt="vaultKeep.creator.name">
                                 <p class="mb-0 ms-1 d-inline text-dark fw-bold">{{ vaultKeep.creator.name.length > 15 ?
                                     vaultKeep.creator.name.substring(0, 12) + '...' : vaultKeep.creator.name }}</p>
                             </router-link>

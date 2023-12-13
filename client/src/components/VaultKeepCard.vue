@@ -1,6 +1,8 @@
 <template>
     <div @click="openVaultKeepModal()" class="position-relative selectable box-shadow rounded">
-        <img class="vaultKeep-img rounded" :src="vaultKeep.img" :alt="`Image for Keep ${vaultKeep.name}`">
+        <img class="vaultKeep-img rounded" :src="vaultKeep.img"
+            onerror="this.src='https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg'"
+            :alt="`Image for Keep ${vaultKeep.name}`">
         <div class="position-absolute t-0 w-100 h-100 d-flex align-items-end p-2">
             <p class="text-shadow fs-4 text-white mb-0 fw-bold">{{ vaultKeep.name }}</p>
         </div>

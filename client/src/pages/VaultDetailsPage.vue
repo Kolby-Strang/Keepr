@@ -5,7 +5,7 @@
                 <div>
                     <div class="position-relative">
                         <img class="vault-img rounded"
-                            onerror="this.src = 'https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=741&h=707&q=60'"
+                            onerror="this.src = 'https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg'"
                             :src="vault.img" :alt="`Image for vault ${vault.name}`">
                         <div class="vault-img-info">
                             <p class="fs-2 mb-0 space-letters">{{ vault.name }}</p>
