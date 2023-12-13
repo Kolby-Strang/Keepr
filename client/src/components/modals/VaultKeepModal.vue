@@ -10,9 +10,9 @@
                 <div class="info-container">
 
                     <div class="d-flex align-items-center pe-4">
-                        <i class="mdi mdi-eye-outline fs-4 m-1"></i>
+                        <i class="mdi mdi-eye-outline fs-4 m-1" title="View Count"></i>
                         {{ vaultKeep.views }}
-                        <i class="mdi mdi-alpha-k-box-outline fs-4 m-1 ms-3"></i>
+                        <i class="mdi mdi-alpha-k-box-outline fs-4 m-1 ms-3" title="Kept Count"></i>
                         {{ vaultKeep.kept }}
                     </div>
                     <div class="pe-4">

@@ -6,16 +6,17 @@
                     onerror="this.src='https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg'"
                     :alt="`Image for keep ${keep.name}`">
                 <div v-if="keep.creator.id == account.id" class="position-absolute t-0 r-0 w-100 h-100 text-end p-2 px-3">
-                    <i @click="destroyKeep()" class="mdi mdi-trash-can-outline fs-3 text-danger text-shadow selectable"></i>
+                    <i @click="destroyKeep()" class="mdi mdi-trash-can-outline fs-3 text-danger text-shadow selectable"
+                        title="Delete Keep"></i>
                 </div>
             </div>
             <div class="col-12 col-md-6 ps-md-0">
                 <div class="info-container">
 
                     <div class="d-flex align-items-center pe-4">
-                        <i class="mdi mdi-eye-outline fs-4 m-1"></i>
+                        <i class="mdi mdi-eye-outline fs-4 m-1" title="View Count"></i>
                         {{ keep.views }}
-                        <i class="mdi mdi-alpha-k-box-outline fs-4 m-1 ms-3"></i>
+                        <i class="mdi mdi-alpha-k-box-outline fs-4 m-1 ms-3" title="Kept Count"></i>
                         {{ keep.kept }}
                     </div>
                     <div class="pe-4">
