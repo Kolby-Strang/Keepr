@@ -3,11 +3,11 @@
         <div class="row mt-3 px-0 mx-0 px-md-5 mx-md-5">
             <div class="col-12 profile-cover-container">
                 <img class="cover-img rounded"
-                    :src="profile.coverImg.length > 1 ? profile.coverImg : 'https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg'"
+                    :src="profile.coverImg?.length > 1 ? profile.coverImg : 'https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg'"
                     onerror="this.src='https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg'"
                     :alt="`Cover image for ${profile.name}`">
                 <img class="profile-img box-shadow"
-                    :src="profile.picture.length > 1 ? profile.picture : 'https://tr.rbxcdn.com/70108dc7da4e002c8e5d2c1dcf0825fb/420/420/Hat/Png'"
+                    :src="profile.picture?.length > 1 ? profile.picture : 'https://tr.rbxcdn.com/70108dc7da4e002c8e5d2c1dcf0825fb/420/420/Hat/Png'"
                     onerror="this.src='https://tr.rbxcdn.com/70108dc7da4e002c8e5d2c1dcf0825fb/420/420/Hat/Png'"
                     :alt="`Profile image for ${profile.name}`">
             </div>
