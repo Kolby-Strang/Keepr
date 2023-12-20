@@ -24,7 +24,7 @@ WORKDIR /app/server
 COPY server/*.csproj ./
 
 # Restore as distinct layers
-RUN dotnet restore
+# RUN dotnet restore
 
 COPY server ./
 COPY --from=client-builder /app/client/docs /app/server/wwwroot
