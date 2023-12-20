@@ -24,13 +24,14 @@ WORKDIR /app/server
 COPY server/*.csproj ./
 
 # Restore as distinct layers
-# RUN dotnet restore
+RUN dotnet restore
 
 COPY server ./
 COPY --from=client-builder /app/client/docs /app/server/wwwroot
 
 # Build and publish a release
-RUN dotnet publish -c Release -o out
+RUN ls
+RUN dotnet publish  -c Release -o out
 
 # Start runtime image
 FROM mcr.microsoft.com/dotnet/sdk:8.0
