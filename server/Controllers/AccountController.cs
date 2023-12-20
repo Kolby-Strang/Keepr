@@ -18,7 +18,7 @@ public class AccountController : ControllerBase
   }
 
   [HttpGet]
-  // [Authorize]
+  [Authorize]
   public async Task<ActionResult<Account>> Get()
   {
     try
