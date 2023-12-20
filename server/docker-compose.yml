@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    image: your-dockerhub-username/Keepr:latest
+    image: strangkolby/Keepr:latest
     env_file:
       - Keepr-env
     ports:
