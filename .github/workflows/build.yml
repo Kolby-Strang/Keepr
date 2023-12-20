@@ -24,5 +24,5 @@ jobs:
       - name: Build and Push Docker Image 🐋
         run: |
           docker buildx create --use
-          docker login -u $DOCKER_USERNAME -p '$DOCKER_PASSWORD'
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker buildx build -t $DOCKER_USERNAME/$REPO_NAME:latest -f server/Dockerfile . --push
