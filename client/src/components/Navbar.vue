@@ -24,7 +24,7 @@
 
       <div class="col-4 d-flex justify-content-center align-items-center">
         <router-link :to="{ name: 'Home' }">
-          <img class="logo" src="src/assets/img/Keepr-Logo.png" alt="Keepr Co. Logo">
+          <img class="logo" src="/src/assets/img/Keepr-Logo.png" alt="Keepr Co. Logo">
         </router-link>
       </div>
 
