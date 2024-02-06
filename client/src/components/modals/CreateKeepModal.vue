@@ -19,7 +19,7 @@
             </div>
             <div class="d-flex justify-content-end">
                 <div>
-                    <button @click="createKeep()" class="btn btn-dark w-100">Create Vault</button>
+                    <button @click="createKeep()" class="btn btn-dark w-100">Create Keep</button>
                 </div>
             </div>
         </div>
