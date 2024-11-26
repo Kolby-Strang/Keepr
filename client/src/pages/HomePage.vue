@@ -17,7 +17,6 @@ import { AppState } from "../AppState"
 import KeepCard from '../components/KeepCard.vue';
 import Loader from '../components/Loader.vue';
 
-
 export default {
   setup() {
     // VARIABLES
