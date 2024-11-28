@@ -39,5 +39,5 @@ jobs:
             sudo echo '$ENV_FILE' > ~/$REPO_NAME-env &&
             sudo docker login -u $DOCKER_USERNAME -p '$DOCKER_PASSWORD' &&
             sudo docker pull $DOCKER_USERNAME/$REPO_NAME:latest &&
-            sudo docker-compose -p $REPO_NAME -f ~/$REPO_NAME-compose up -d
+            sudo docker compose -p $REPO_NAME -f ~/$REPO_NAME-compose up -d
           "
